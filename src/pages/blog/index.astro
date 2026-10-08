@@ -1,0 +1,11 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PostList from '../../components/PostList.astro';
+import { publishedPosts } from '../../lib/content';
+
+const posts = await publishedPosts();
+---
+<Layout title="Blog" description="Notes and occasional posts.">
+  <section class="page-heading"><p class="eyebrow">Writing</p><h1>Blog</h1><p class="lead">Notes and occasional posts.</p></section>
+  {posts.length ? <PostList posts={posts} /> : <p class="empty">No posts published yet. Check back soon.</p>}
+</Layout>

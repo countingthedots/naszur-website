@@ -1,0 +1,65 @@
+backend:
+  name: github
+  repo: countingthedots/naszur-website
+  branch: main
+  base_url: https://naszur.pages.dev
+  auth_endpoint: auth
+
+local_backend: true
+site_url: https://naszur.pages.dev
+display_url: https://naszur.pages.dev
+media_folder: public/uploads
+public_folder: /uploads
+
+collections:
+  - name: posts
+    label: Blog posts
+    folder: src/content/posts
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Description, name: description, widget: text }
+      - { label: Date, name: date, widget: datetime, date_format: YYYY-MM-DD, time_format: false, format: YYYY-MM-DD }
+      - { label: Draft, name: draft, widget: boolean, default: true, hint: "Drafts and future-dated posts stay off the public website. Publishing a scheduled post requires a rebuild after its date." }
+      - { label: Tags, name: tags, widget: list, required: false, default: [] }
+      - { label: Body, name: body, widget: markdown }
+  - name: pages
+    label: Site content
+    files:
+      - name: profile
+        label: Profile
+        file: src/data/site.json
+        fields:
+          - { label: Name, name: name, widget: string }
+          - { label: Headline, name: description, widget: string }
+          - { label: Bio, name: bio, widget: text }
+      - name: photos
+        label: Photos
+        file: src/data/photos.json
+        fields:
+          - label: Photos
+            name: photos
+            widget: list
+            required: false
+            summary: "{{fields.caption}}"
+            fields:
+              - { label: Image, name: image, widget: image }
+              - { label: Alt text, name: alt, widget: string, hint: "Describe the photograph for screen readers." }
+              - { label: Caption, name: caption, widget: string, required: false }
+              - { label: Width in pixels, name: width, widget: number, value_type: int, min: 1, default: 1600 }
+              - { label: Height in pixels, name: height, widget: number, value_type: int, min: 1, default: 1067 }
+      - name: links
+        label: Links
+        file: src/data/links.json
+        fields:
+          - label: Links
+            name: links
+            widget: list
+            required: false
+            summary: "{{fields.title}}"
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: URL, name: url, widget: string, pattern: ['^https?://', 'Use a full HTTP or HTTPS URL.'] }
+              - { label: Description, name: description, widget: string, required: false }

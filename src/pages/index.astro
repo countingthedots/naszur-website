@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PostList from '../components/PostList.astro';
+import site from '../data/site.json';
+import { publishedPosts } from '../lib/content';
+
+const posts = (await publishedPosts()).slice(0, 3);
+---
+<Layout>
+  <section class="intro">
+    <p class="eyebrow">Personal website</p>
+    <h1>{site.description}</h1>
+    <p class="lead">{site.bio}</p>
+  </section>
+  <section class="home-sections" aria-label="Explore">
+    <a class="section-link" href="/photos/"><h2>Photos <span aria-hidden="true">↗</span></h2><p>A place for moments and photographs.</p></a>
+    <a class="section-link" href="/links/"><h2>Links <span aria-hidden="true">↗</span></h2><p>Where to find me and what I'm keeping.</p></a>
+  </section>
+  <section class="latest">
+    <div class="section-heading"><h2>Latest posts</h2><a href="/blog/">All posts →</a></div>
+    {posts.length ? <PostList posts={posts} /> : <p class="empty">No posts published yet. Check back soon.</p>}
+  </section>
+</Layout>

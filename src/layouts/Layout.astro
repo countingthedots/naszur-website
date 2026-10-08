@@ -1,0 +1,52 @@
+---
+import site from '../data/site.json';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description = site.description } = Astro.props;
+const pageTitle = title ? `${title} · ${site.name}` : site.name;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const navigation = [
+  { href: '/', label: 'Home' },
+  { href: '/photos/', label: 'Photos' },
+  { href: '/blog/', label: 'Blog' },
+  { href: '/links/', label: 'Links' },
+];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f7f6f2" />
+    <title>{pageTitle}</title>
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" type="application/rss+xml" title={`${site.name} blog`} href="/rss.xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header wrap">
+      <a class="wordmark" href="/">{site.name}<span aria-hidden="true">.</span></a>
+      <nav aria-label="Main navigation">
+        {navigation.map(({ href, label }) => (
+          <a href={href} aria-current={Astro.url.pathname === href || (href !== '/' && Astro.url.pathname.startsWith(href)) ? 'page' : undefined}>{label}</a>
+        ))}
+      </nav>
+    </header>
+    <main id="main" class="wrap"><slot /></main>
+    <footer class="site-footer wrap">
+      <span>© {new Date().getFullYear()} {site.name}</span>
+      <a href="/rss.xml">RSS</a>
+    </footer>
+  </body>
+</html>

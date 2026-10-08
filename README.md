@@ -1,0 +1,63 @@
+# naszur website
+
+Personal website built with Astro, TypeScript, and Decap CMS. Cloudflare Pages serves the static site. Two Pages Functions handle GitHub OAuth for the admin panel.
+
+## Development
+
+Requires Node.js 22.12 or newer.
+
+```sh
+npm ci
+npm run dev
+```
+
+The site runs at http://localhost:4321. For local admin editing, run `npm run cms:local` in another terminal, then open http://localhost:4321/admin/. The local CMS server writes directly to the checkout without GitHub login. Never expose that server publicly.
+
+```sh
+npm run check
+npm run build
+```
+
+## Content
+
+- `/admin/` edits blog posts, photos, links, and profile text.
+- Blog posts are Markdown files in `src/content/posts/`.
+- Drafts and future-dated posts are excluded from the site and RSS feed.
+- Publication dates are evaluated at build time. Future-dated posts need a new deployment after their date to appear.
+- Profile, links, and gallery entries live in `src/data/`.
+- Uploads live in `public/uploads/`. Resize photos before uploading, remove sensitive EXIF metadata, and keep files below Cloudflare's 25 MiB per-file limit. Enter their actual width and height in the gallery form.
+- The starter post is a draft. The gallery intentionally starts empty.
+
+## Cloudflare Pages
+
+Project name: `naszur`. Production URL: https://naszur.pages.dev.
+
+Connect `countingthedots/naszur-website` in Cloudflare Pages with these settings:
+
+- Production branch: `main`
+- Build command: `npm run build`
+- Output directory: `dist`
+- Root directory: repository root
+- Node.js version: `24` via the `NODE_VERSION` build environment variable
+
+The GitHub repository is connected to this Pages project. Builds redeploy whenever the CMS commits to `main`. To deploy manually, run `npm run deploy` after authenticating Wrangler. This uploads `dist/` and the OAuth Functions together.
+
+## GitHub OAuth setup
+
+The public website does not need any secrets. Production CMS login needs a GitHub OAuth application:
+
+1. The `naszur website admin` OAuth app is already registered at https://github.com/settings/applications/3915818. For a separate installation, create your own app at https://github.com/settings/developers.
+2. Set its homepage to `https://naszur.pages.dev`.
+3. Set its authorization callback URL to `https://naszur.pages.dev/auth/callback`.
+4. The public `GITHUB_CLIENT_ID` is configured in `wrangler.jsonc`. The `GITHUB_CLIENT_SECRET` is stored as an encrypted Cloudflare Pages production variable. For a separate installation, change the public client ID and configure its encrypted secret, then redeploy. Never commit the secret.
+5. Open https://naszur.pages.dev/admin/ and log in with `countingthedots`.
+
+The `public_repo` OAuth scope is needed to publish to this public repository. GitHub grants that scope across your public repositories, not just this site. The callback only accepts the account named in `GITHUB_ALLOWED_LOGIN`, validates a short-lived HTTP-only state cookie, and sends the token only to the exact production origin.
+
+For local testing of the Functions, copy `.dev.vars.example` to `.dev.vars`, supply credentials for a separate local OAuth app, and run `npm run dev:cloudflare -- --binding SITE_ORIGIN=http://localhost:8788`. Its callback must use the same local origin. Production login intentionally rejects preview/local origins; use local CMS mode for routine content editing.
+
+The admin bundle uses a pinned Decap CMS release from unpkg with a verified Subresource Integrity hash. The local CMS server's `simple-git` and Joi dependencies are overridden to patched releases; keep those overrides when updating dependencies.
+
+## Design
+
+Styling is intentionally minimal until the design is chosen. Shared layout: `src/layouts/Layout.astro`. Styles: `src/styles/global.css`.

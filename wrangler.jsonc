@@ -1,0 +1,11 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "naszur",
+  "pages_build_output_dir": "./dist",
+  "compatibility_date": "2026-10-08",
+  "vars": {
+    "SITE_ORIGIN": "https://naszur.pages.dev",
+    "GITHUB_ALLOWED_LOGIN": "countingthedots",
+    "GITHUB_CLIENT_ID": "Ov23li4oXPliJHMSencM"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "naszur-website",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 0.0.0.0",
+    "check": "astro check && tsc -p tsconfig.functions.json",
+    "build": "astro build",
+    "preview": "astro preview --host 0.0.0.0",
+    "cms:local": "decap-server",
+    "dev:cloudflare": "wrangler pages dev dist",
+    "deploy": "npm run check && npm run build && wrangler pages deploy dist --project-name naszur --branch main"
+  },
+  "dependencies": {
+    "astro": "7.3.8"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "@cloudflare/workers-types": "5.20261008.1",
+    "decap-server": "3.11.3",
+    "typescript": "^5.9.3",
+    "wrangler": "4.149.0"
+  },
+  "overrides": {
+    "decap-server": {
+      "simple-git": "4.0.2",
+      "@hapi/joi": "npm:joi@18.2.9"
+    }
+  }
+}

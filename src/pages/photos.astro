@@ -1,0 +1,20 @@
+---
+import Layout from '../layouts/Layout.astro';
+import photoData from '../data/photos.json';
+
+interface Photo { image: string; alt: string; caption?: string; width: number; height: number }
+const photos = photoData.photos as Photo[];
+---
+<Layout title="Photos" description="Moments and photographs.">
+  <section class="page-heading"><p class="eyebrow">Pictures</p><h1>Photos</h1><p class="lead">Moments and photographs.</p></section>
+  {photos.length ? (
+    <div class="photo-grid">
+      {photos.map((photo) => (
+        <figure>
+          <a href={photo.image} aria-label={`Open photo: ${photo.alt}`}><img src={photo.image} alt={photo.alt} width={photo.width} height={photo.height} loading="lazy" decoding="async" /></a>
+          {photo.caption && <figcaption>{photo.caption}</figcaption>}
+        </figure>
+      ))}
+    </div>
+  ) : <p class="empty">No photos added yet. Check back soon.</p>}
+</Layout>
