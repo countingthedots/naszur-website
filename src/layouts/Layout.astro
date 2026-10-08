@@ -1,6 +1,11 @@
 ---
 import site from '../data/site.json';
 import '../styles/global.css';
+import '@fontsource/archivo-black';
+import '@fontsource/dm-sans/400.css';
+import '@fontsource/dm-sans/500.css';
+import '@fontsource/dm-sans/700.css';
+import '@fontsource/caveat/500.css';
 
 interface Props {
   title?: string;
@@ -23,7 +28,7 @@ const navigation = [
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#f7f6f2" />
+    <meta name="theme-color" content="#304951" />
     <title>{pageTitle}</title>
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -36,17 +41,17 @@ const navigation = [
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header wrap">
-      <a class="wordmark" href="/">{site.name}<span aria-hidden="true">.</span></a>
+      <a class="wordmark" href="/" aria-label={`${site.name}, home`}>nz<span aria-hidden="true">✳</span></a>
       <nav aria-label="Main navigation">
         {navigation.map(({ href, label }) => (
           <a href={href} aria-current={Astro.url.pathname === href || (href !== '/' && Astro.url.pathname.startsWith(href)) ? 'page' : undefined}>{label}</a>
         ))}
       </nav>
     </header>
-    <main id="main" class="wrap"><slot /></main>
+    <main id="main" class:list={['wrap', { 'home-page': Astro.url.pathname === '/' }]}><slot /></main>
     <footer class="site-footer wrap">
       <span>© {new Date().getFullYear()} {site.name}</span>
-      <a href="/rss.xml">RSS</a>
+      <div><a href={`mailto:${site.email}`}>Say hello ↗</a><a href="/rss.xml">RSS</a></div>
     </footer>
   </body>
 </html>

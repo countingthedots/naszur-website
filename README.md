@@ -20,7 +20,7 @@ npm run build
 
 ## Content
 
-- `/admin/` edits blog posts, photos, links, and profile text.
+- `/admin/` edits blog posts, photos, links, profile text, contact details, interests, experience, and education.
 - Blog posts are Markdown files in `src/content/posts/`.
 - Drafts and future-dated posts are excluded from the site and RSS feed.
 - Publication dates are evaluated at build time. Future-dated posts need a new deployment after their date to appear.
@@ -60,4 +60,8 @@ The admin bundle uses a pinned Decap CMS release from unpkg with a verified Subr
 
 ## Design
 
-Styling is intentionally minimal until the design is chosen. Shared layout: `src/layouts/Layout.astro`. Styles: `src/styles/global.css`.
+The homepage uses a scrapbook/notebook layout, with sea-blue, cream, copper, and muted olive drawn from the portrait. Fonts are hosted locally. Shared layout: `src/layouts/Layout.astro`. Styles: `src/styles/global.css`.
+
+The optimized homepage portrait is `src/assets/nastassia.webp`, cropped from `public/Me.jpg` with metadata removed. Astro generates responsive image sizes at build time. To replace this portrait, update that source asset. Gallery photos are managed separately in the admin panel.
+
+Career entries in `src/data/site.json` use `title`, `organization`, `period`, and an optional `description`. Empty experience and education lists are not rendered. Add only verified career facts; do not upload full CVs or publish their private contents.

@@ -33,8 +33,33 @@ collections:
         file: src/data/site.json
         fields:
           - { label: Name, name: name, widget: string }
-          - { label: Headline, name: description, widget: string }
+          - { label: First name, name: firstName, widget: string }
+          - { label: Surname, name: surname, widget: string }
+          - { label: Role, name: role, widget: string }
+          - { label: Search description, name: description, widget: text }
           - { label: Bio, name: bio, widget: text }
+          - { label: Email, name: email, widget: string }
+          - { label: Phone, name: phone, widget: string }
+          - { label: Instagram username, name: instagram, widget: string, hint: "Username only, without @." }
+          - { label: Interests, name: interests, widget: list }
+          - label: Experience
+            name: experience
+            widget: list
+            required: false
+            fields:
+              - { label: Role, name: title, widget: string }
+              - { label: Organization, name: organization, widget: string }
+              - { label: Dates, name: period, widget: string }
+              - { label: Description, name: description, widget: text, required: false }
+          - label: Education
+            name: education
+            widget: list
+            required: false
+            fields:
+              - { label: Degree or course, name: title, widget: string }
+              - { label: Institution, name: organization, widget: string }
+              - { label: Dates, name: period, widget: string }
+              - { label: Description, name: description, widget: text, required: false }
       - name: photos
         label: Photos
         file: src/data/photos.json

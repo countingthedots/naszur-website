@@ -1,5 +1,14 @@
 {
-  "name": "naszur",
-  "description": "Notes, photographs, and things worth keeping.",
-  "bio": "Welcome to my personal website. This is where I'll share photos, write occasional posts, and collect links."
+  "name": "Nastassia Zhuravel",
+  "firstName": "Nastassia",
+  "surname": "Zhuravel",
+  "role": "Junior marketing specialist",
+  "description": "Nastassia Zhuravel. Junior marketing specialist with a data analytics background and an eye for design.",
+  "bio": "I bring a data analytics background and an eye for design to marketing. I care about how a message looks, what it says, and whether it works.",
+  "email": "countingthedots@gmail.com",
+  "phone": "+48789370344",
+  "instagram": "tendernesss.co",
+  "interests": ["Marketing", "Data analytics", "Design"],
+  "experience": [],
+  "education": []
 }
