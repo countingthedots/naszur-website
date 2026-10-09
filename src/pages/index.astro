@@ -13,16 +13,13 @@ const posts = (await publishedPosts()).slice(0, 3);
 ---
 <Layout>
   <div class="desk-shelf">
-    <a class="social-ticket" href={`https://www.instagram.com/${site.instagram}/`} target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="5" y="5" width="30" height="30" rx="9"/><circle cx="20" cy="20" r="7"/><circle class="camera-dot" cx="29" cy="11" r="2"/></svg><span class="handwritten">A little more me<br /><strong>@{site.instagram} ↗</strong></span></a>
-    <span class="desk-scribble handwritten" aria-hidden="true">come on in!<svg viewBox="0 0 110 60"><path d="M5 8 Q85 0 93 43 M75 33 95 46 104 25"/></svg></span>
-    <a class="envelope" href={`mailto:${site.email}`}><span class="envelope-letter"><span class="handwritten">You've got my email.</span><span>{site.email}</span></span><span class="envelope-front"><span class="handwritten">Let's make something! ↗</span></span></a>
+    <a class="social-ticket" href={`https://www.instagram.com/${site.instagram}/`} target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="5" y="5" width="30" height="30" rx="9"/><circle cx="20" cy="20" r="7"/><circle class="camera-dot" cx="29" cy="11" r="2"/></svg><span class="handwritten">Instagram<br /><strong>@{site.instagram} ↗</strong></span></a>
+    <a class="envelope" href={`mailto:${site.email}`}><span class="envelope-letter"><span>{site.email}</span></span><span class="envelope-front"><span class="handwritten">Email me ↗</span></span></a>
   </div>
   <section class="notebook" aria-label="About Nastassia">
-    <div class="notebook-topline"><span>A little about me</span><span>My personal notebook</span></div>
     <div class="introduction">
       <div class="portrait-column">
-        <span class="handwritten portrait-note">Hi, that's me! <span aria-hidden="true">↴</span></span>
-        <div class="graph-paper" aria-hidden="true"><span class="paper-tape"></span><span class="handwritten">a work in progress,<br />in the best way.</span></div>
+        <div class="graph-paper" aria-hidden="true"><span class="paper-tape"></span></div>
         <svg class="pushpin" viewBox="0 0 70 100" aria-hidden="true"><defs><linearGradient id="pin-red" x2="1" y2="1"><stop stop-color="#ff977d"/><stop offset=".5" stop-color="#f44346"/><stop offset="1" stop-color="#ad1839"/></linearGradient></defs><path d="M33 65 41 94 44 62" fill="#8a8992"/><path d="M13 58 Q10 45 25 42 L22 15 51 9 56 38 Q72 43 66 53 Q44 76 13 58Z" fill="url(#pin-red)"/><ellipse cx="36" cy="15" rx="19" ry="10" transform="rotate(-12 36 15)" fill="#ff7774"/><path d="m27 23 4 18" stroke="#ffb1a0" stroke-width="5" stroke-linecap="round"/></svg>
         <svg class="paperclip" viewBox="0 0 60 120" aria-hidden="true"><path d="M44 83 V25 Q44 5 29 5 Q11 5 11 25 V89 Q11 113 31 113 Q51 113 51 91 V35 Q51 18 35 18 Q24 18 24 33 V82 Q24 92 32 92 Q39 92 39 82 V36" fill="none" stroke="#5d696e" stroke-width="8" stroke-linecap="round"/><path d="M42 82 V25 Q42 7 29 7 Q13 7 13 25 V89 Q13 111 31 111 Q49 111 49 91 V35 Q49 20 35 20 Q26 20 26 33 V82 Q26 90 32 90 Q37 90 37 82 V36" fill="none" stroke="#dee5df" stroke-width="3" stroke-linecap="round"/></svg>
         <figure class="portrait-cutout">
@@ -31,8 +28,6 @@ const posts = (await publishedPosts()).slice(0, 3);
         </figure>
         <svg class="portrait-star" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 4 60 35 94 24 72 50 96 72 63 69 55 98 43 72 12 88 28 59 4 43 37 39Z" /></svg>
         <svg class="small-star" viewBox="0 0 100 100" aria-hidden="true"><path d="m50 4 10 30 34-5-22 24 18 32-34-11-19 25-3-35-30-8 30-14Z"/></svg>
-        <span class="hello-seal" aria-hidden="true"><span class="handwritten">nice to<br />meet you!</span></span>
-        <a class="instagram-note" href={`https://www.instagram.com/${site.instagram}/`} target="_blank" rel="noopener noreferrer"><span class="handwritten">My little corner<br />of the internet</span><span>@{site.instagram} ↗</span></a>
       </div>
       <div class="intro-copy">
         <svg class="giant-doodle" viewBox="0 0 250 290" aria-hidden="true"><path d="m120 12 17 89 84-59-45 96 63 18-69 32 45 82-81-48-24 56-18-83-70 41 45-72-62-30 73-14Z"/></svg>
@@ -42,7 +37,6 @@ const posts = (await publishedPosts()).slice(0, 3);
         <p class="bio">{site.bio}</p>
         <div class="paper-labels" aria-label="My interests">{site.interests.map((interest) => <span>{interest}</span>)}</div>
         <a class="contact-link" href="#contact"><svg viewBox="0 0 240 90" preserveAspectRatio="none" aria-hidden="true"><path d="M10 47 C-4 0 226-9 230 42 C246 91 14 105 10 47Z"/><path class="button-scribble" d="M16 56 C15 94 232 84 224 36"/></svg><span>Let's talk ↗</span></a>
-        <p class="handwritten margin-note">A head for numbers.<br />An eye for the details.</p>
       </div>
     </div>
     {(experience.length > 0 || education.length > 0) && <div class="career-spread">
@@ -52,9 +46,9 @@ const posts = (await publishedPosts()).slice(0, 3);
     <div class="notebook-bottomline"><span>{site.name}</span><span class="handwritten" aria-hidden="true">nz ♡</span></div>
   </section>
   <section class="contact-sheet" id="contact">
-    <div class="contact-heading"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 40 C23 3 4 30 35 49 C-9 39-4 73 37 61 C12 96 42 106 49 70 C58 108 86 90 64 64 C103 80 108 47 70 48 C105 25 78 3 59 39 C62 0 29-2 42 37Z"/><circle cx="53" cy="53" r="12"/></svg><p class="eyebrow">Get in touch</p><h2>Good things start<br />with a hello.</h2><span class="handwritten">Your move ↴</span></div>
+    <div class="contact-heading"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 40 C23 3 4 30 35 49 C-9 39-4 73 37 61 C12 96 42 106 49 70 C58 108 86 90 64 64 C103 80 108 47 70 48 C105 25 78 3 59 39 C62 0 29-2 42 37Z"/><circle cx="53" cy="53" r="12"/></svg><h2>Contact</h2></div>
     <div class="contact-details"><a href={`mailto:${site.email}`}>{site.email} <span aria-hidden="true">↗</span></a><a href={`tel:${site.phone}`}>{site.phone} <span aria-hidden="true">↗</span></a><a href={`https://www.instagram.com/${site.instagram}/`} target="_blank" rel="noopener noreferrer">@{site.instagram} <span aria-hidden="true">↗</span></a></div>
   </section>
   {posts.length > 0 && <section class="latest"><div class="section-heading"><h2>From my notebook</h2><a href="/blog/">All posts →</a></div><PostList posts={posts} /></section>}
-  <section class="browse-pages" aria-label="More to explore"><span class="handwritten">Psst... there's more</span><a href="/photos/">Photos ↗</a><a href="/blog/">Blog ↗</a><a href="/links/">Links ↗</a></section>
+  <nav class="browse-pages" aria-label="Explore"><a href="/photos/">Photos ↗</a><a href="/blog/">Blog ↗</a><a href="/links/">Links ↗</a></nav>
 </Layout>

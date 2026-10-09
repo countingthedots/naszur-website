@@ -51,7 +51,7 @@ const navigation = [
     <main id="main" class:list={['wrap', { 'home-page': Astro.url.pathname === '/' }]}><slot /></main>
     <footer class="site-footer wrap">
       <span>© {new Date().getFullYear()} {site.name}</span>
-      <div><a href={`mailto:${site.email}`}>Say hello ↗</a><a href="/rss.xml">RSS</a></div>
+      <nav aria-label="Footer"><a href="/#contact">Contact ↗</a><a href="/rss.xml">RSS</a></nav>
     </footer>
   </body>
 </html>
