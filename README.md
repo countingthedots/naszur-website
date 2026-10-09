@@ -60,8 +60,8 @@ The admin bundle uses a pinned Decap CMS release from unpkg with a verified Subr
 
 ## Design
 
-The homepage uses a scrapbook/notebook layout, with sea-blue, cream, copper, and muted olive drawn from the portrait. Fonts are hosted locally. Shared layout: `src/layouts/Layout.astro`. Styles: `src/styles/global.css`.
+The homepage is a colorful desk collage: green painted wood, cream notebook pages, lemon graph paper, cobalt ink, pink binding, cut-paper links, and a contact envelope. A small repeating grain texture adds surface detail without SVG noise filters. Fonts are hosted locally. Shared layout: `src/layouts/Layout.astro`. Styles: `src/styles/global.css`.
 
-The optimized homepage portrait is `src/assets/nastassia.webp`, cropped from `public/Me.jpg` with metadata removed. Astro generates responsive image sizes at build time. To replace this portrait, update that source asset. Gallery photos are managed separately in the admin panel.
+The homepage portrait is `src/assets/nastassia-cutout.webp`, a transparent cutout from the supplied `Me-cut.jpg`. `src/assets/portrait-mask.svg` traces the silhouette so black clothing stays intact when removing the JPEG's black background. The generated WebP has no source metadata. Astro generates responsive image sizes at build time. To replace this portrait, update the cutout asset and its mask if needed. Gallery photos are managed separately in the admin panel.
 
 Career entries in `src/data/site.json` use `title`, `organization`, `period`, and an optional `description`. Empty experience and education lists are not rendered. Add only verified career facts; do not upload full CVs or publish their private contents.
