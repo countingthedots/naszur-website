@@ -1,8 +1,8 @@
 ---
 title: Hello, world
-description: A starter draft. Replace it with your first post.
+description: A starter draft. Replace it with your first post
 date: 2026-10-08
-draft: false
+draft: true
 tags: []
 ---
 
