@@ -2,7 +2,7 @@
 title: Hello, world
 description: A starter draft. Replace it with your first post.
 date: 2026-10-08
-draft: true
+draft: false
 tags: []
 ---
 
