@@ -38,6 +38,8 @@ collections:
           - { label: Role, name: role, widget: string }
           - { label: Search description, name: description, widget: text }
           - { label: Bio, name: bio, widget: text }
+          - { label: Hobbies, name: hobbies, widget: text }
+          - { label: Letterboxd URL, name: letterboxd, widget: string, pattern: ['^https://', 'Use a full HTTPS URL.'] }
           - { label: Email, name: email, widget: string }
           - { label: Phone, name: phone, widget: string }
           - { label: Instagram username, name: instagram, widget: string, hint: "Username only, without @." }

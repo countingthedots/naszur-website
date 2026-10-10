@@ -28,6 +28,20 @@ npm run build
 - Uploads live in `public/uploads/`. Resize photos before uploading, remove sensitive EXIF metadata, and keep files below Cloudflare's 25 MiB per-file limit. Enter their actual width and height in the gallery form.
 - The starter post is a draft. The gallery intentionally starts empty.
 
+## Using the admin panel
+
+1. Open https://naszur.pages.dev/admin/ and choose GitHub login. Sign in as `countingthedots` and authorize the app. Allow the login popup if your browser blocks it.
+2. Choose **Site content → Profile** to edit your name, role, bio, hobbies, Letterboxd address, contact details, interests, experience or education. Save/publish when finished.
+3. Choose **Blog posts** and create a new entry. Add its title, short description, date and body. Tags are optional. Keep **Draft** checked to hide it from visitors. When ready, uncheck Draft, use today's date or an earlier date, and save/publish. The starter post can be edited or replaced.
+4. Choose **Site content → Photos** and add an item to the Photos list. Upload/select an image, describe it in Alt text, add a caption if wanted, and enter the image's actual width and height in pixels. Save/publish the entry. Uploading a file to Media alone does not add it to the gallery.
+5. Choose **Site content → Links** and add a title, a full `https://` address, and an optional description. Save/publish.
+
+Each save/publish writes a commit to `main`. Cloudflare then builds the site. Your changes appear after the deployment succeeds, not immediately when you save. Check the deployment in Cloudflare Pages if an update does not appear.
+
+There is no separate editorial review workflow. The Draft checkbox hides a blog post on the website, but its source and uploaded images are still in the public GitHub repository. Do not put private information in drafts or uploads. Future-dated posts need a rebuild after their date; they do not publish automatically.
+
+The homepage portrait, drawings, colors and layout are managed in code. The Photos collection controls the separate gallery, not your homepage portrait.
+
 ## Cloudflare Pages
 
 Project name: `naszur`. Production URL: https://naszur.pages.dev.

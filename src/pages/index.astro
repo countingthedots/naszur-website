@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import PostList from '../components/PostList.astro';
+import CottageDoodles from '../components/CottageDoodles.astro';
 import portrait from '../assets/nastassia-cutout.webp';
 import site from '../data/site.json';
 import { publishedPosts } from '../lib/content';
@@ -35,8 +36,11 @@ const posts = (await publishedPosts()).slice(0, 3);
         <h1><span>{site.firstName}</span><span>{site.surname}<svg viewBox="0 0 430 25" preserveAspectRatio="none" aria-hidden="true"><path d="M4 15 Q180 0 426 12 M25 23 Q210 10 397 19" /></svg></span></h1>
         <p class="role-label">{site.role}</p>
         <p class="bio">{site.bio}</p>
+        <p class="bio hobby-copy">{site.hobbies}</p>
+        <a class="letterboxd-link" href={site.letterboxd} target="_blank" rel="noopener noreferrer">My Letterboxd <span aria-hidden="true">↗</span></a>
         <div class="paper-labels" aria-label="My interests">{site.interests.map((interest) => <span>{interest}</span>)}</div>
         <a class="contact-link" href="#contact"><svg viewBox="0 0 240 90" preserveAspectRatio="none" aria-hidden="true"><path d="M10 47 C-4 0 226-9 230 42 C246 91 14 105 10 47Z"/><path class="button-scribble" d="M16 56 C15 94 232 84 224 36"/></svg><span>Let's talk ↗</span></a>
+        <CottageDoodles />
       </div>
     </div>
     {(experience.length > 0 || education.length > 0) && <div class="career-spread">
